@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+packages/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache
+.vs/
+
+# ASP.NET
+*[Dd]ata/
+*.db
+
+# Misc
+*.log
+*.tmp
+
+# Project-specific user files
+GestionCatalogo.Web/GestionCatalogo.Web.csproj.user

@@ -30,6 +30,13 @@
         <a href="Default.aspx" style="padding:8px 14px; border:1px solid #cbd5e1; border-radius:8px; text-decoration:none; color:#54657c; font-size:.85rem;">Limpiar</a>
     </div>
 
+    <div id="divCargando" runat="server" style="display:none; text-align:center; padding:40px; color:#708699;">
+        <div class="cargando">
+            <div class="caja"></div>
+            <span>Cargando artículos...</span>
+        </div>
+    </div>
+
     <div class="fichero-grid">
         <asp:Repeater ID="repArticulos" runat="server">
             <ItemTemplate>
@@ -47,6 +54,12 @@
                     </div>
                 </div>
             </ItemTemplate>
+            <EmptyDataTemplate>
+                <div class="tarjeta vacia">
+                    <h3>No hay artículos disponibles</h3>
+                    <p>Aún no se han agregado productos al catálogo.</p>
+                </div>
+            </EmptyDataTemplate>
         </asp:Repeater>
     </div>
 

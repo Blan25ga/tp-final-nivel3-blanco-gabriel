@@ -46,8 +46,11 @@
             </table>
         </div>
         <div style="display:flex; justify-content:center; gap:10px; margin-top:20px; align-items:center;">
+            <asp:LinkButton ID="btnPaginaPrimera" runat="server" CommandArgument="1">|<</asp:LinkButton>
             <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" Enabled="false">Anterior</asp:LinkButton>
+            <asp:Label ID="lblPaginacion" runat="server" Text="Página 1 de 1"></asp:Label>
             <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1">Siguiente</asp:LinkButton>
+            <asp:LinkButton ID="btnPaginaUltima" runat="server" CommandArgument="99">>|</asp:LinkButton>
         </div>
     </div>
 </asp:Content>

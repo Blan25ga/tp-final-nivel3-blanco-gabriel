@@ -46,6 +46,18 @@ namespace GestionCatalogo.Web
             args.IsValid = (txtPass.Text.Length == 0 || txtPass.Text.Length >= 4);
         }
 
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNombre.Text.Length > 50)
+                txtNombre.Text = txtNombre.Text.Substring(0, 50);
+        }
+
+        protected void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            if (txtApellido.Text.Length > 50)
+                txtApellido.Text = txtApellido.Text.Substring(0, 50);
+        }
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             Page.Validate();

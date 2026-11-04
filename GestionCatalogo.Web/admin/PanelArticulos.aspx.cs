@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
@@ -9,6 +9,11 @@ namespace GestionCatalogo.Web.admin
 {
     public partial class PanelArticulos : System.Web.UI.Page
     {
+        private const int pageSize = 9;
+        private int currentPage = 1;
+        private string sortColumn = "Nombre";
+        private string sortDirection = "ASC";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Seguridad.esAdmin(Session["user"]))
@@ -29,14 +34,44 @@ namespace GestionCatalogo.Web.admin
             try
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                repArticulos.DataSource = negocio.listar();
+                List<Articulo> lista = negocio.listarOrdenado(sortColumn, sortDirection);
+
+                int totalItems = lista.Count;
+                int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                int startIndex = (currentPage - 1) * pageSize;
+                int endIndex = Math.Min(startIndex + pageSize, totalItems);
+                var pagina = lista.GetRange(startIndex, endIndex - startIndex);
+
+                repArticulos.DataSource = pagina;
                 repArticulos.DataBind();
+
+                lblPaginacion.Text = "Página " + currentPage + " de " + totalPages + " (" + totalItems + " artículos)";
+                btnPaginaAnterior.Enabled = (currentPage > 1);
+                btnPaginaSiguiente.Enabled = (currentPage < totalPages);
+
+                rblSortColumn.SelectedValue = sortColumn;
+                rblSortDirection.SelectedValue = sortDirection;
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
                 Response.Redirect("~/Error.aspx", false);
             }
+        }
+
+        protected void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            currentPage--;
+            cargarListado();
+        }
+
+        protected void btnPaginaSiguiente_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            cargarListado();
         }
 
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
@@ -54,6 +89,13 @@ namespace GestionCatalogo.Web.admin
                 Session.Add("error", ex.ToString());
                 Response.Redirect("~/Error.aspx", false);
             }
+        }
+
+        protected void hdnSort_Command(object sender, CommandEventArgs e)
+        {
+            sortColumn = e.CommandArgument.ToString();
+            sortDirection = sortColumn == "Nombre" ? "DESC" : "ASC";
+            cargarListado();
         }
     }
 }

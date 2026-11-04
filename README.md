@@ -130,6 +130,7 @@ Editar `GestionCatalogo.Web/Web.config`:
 
 ---
 
+<<<<<<< HEAD
 ## 📫 Contacto
 
 Si tienes preguntas o comentarios sobre el proyecto, puedes contactarme:
@@ -149,15 +150,7 @@ Si tienes preguntas o comentarios sobre el proyecto, puedes contactarme:
 ---
 
 ## 📈 Mejoras futuras
+=======
+>>>>>>> 7688f8ecf068ea44d8e66c0cb01238e1be2c4b2d
 
-- [ ] Implementación de pruebas unitarias
-- [ ] Pestañas dinámicas en el panel de administración
-- [ ] Exportación de datos a CSV/PDF
-- [ ] Optimización de consultas SQL
-- [ ] Implementación de audit logging
-- [ ] Diseño responsive completo
-
----
-
-📫 **Contacto**: gabriel.blanco@maxi.com.ar  
 🔗 **Repositorio**: https://github.com/Blan25ga/tp-final-nivel3-blanco-gabriel

@@ -9,22 +9,26 @@
 
         <div id="divMensaje" runat="server" class="mensaje-error" visible="false"></div>
 
-        <label>Email</label>
-        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" placeholder="ej. email@dominio.com"></asp:TextBox>
+        <label>Email *</label>
+        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" placeholder="ej. email@dominio.com" MaxLength="50"></asp:TextBox>
         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
             ErrorMessage="Formato de email inválido." CssClass="error-texto" Display="Dynamic"
             ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"></asp:RegularExpressionValidator>
         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
             CssClass="error-texto" Display="Dynamic" ErrorMessage="Debes completar el email."></asp:RequiredFieldValidator>
 
-        <label>Contraseña</label>
-        <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
+        <label>Contraseña *</label>
+        <asp:TextBox ID="txtPass" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvPass" runat="server" ControlToValidate="txtPass"
+            CssClass="error-texto" Display="Dynamic" ErrorMessage="Debes completar la contraseña."></asp:RequiredFieldValidator>
         <asp:CustomValidator ID="cvPass" runat="server" ControlToValidate="txtPass"
-            CssClass="error-texto" Display="Dynamic" ErrorMessage="La contraseña debe tener al menos 4 caracteres."
+            CssClass="error-texto" Display="Dynamic" ErrorMessage="La contraseña debe tener al menos 6 caracteres."
             OnServerValidate="validarPass"></asp:CustomValidator>
 
-        <label>Repetir contraseña</label>
-        <asp:TextBox ID="txtRePass" runat="server" TextMode="Password"></asp:TextBox>
+        <label>Repetir contraseña *</label>
+        <asp:TextBox ID="txtRePass" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvRePass" runat="server" ControlToValidate="txtRePass"
+            CssClass="error-texto" Display="Dynamic" ErrorMessage="Debes repetir la contraseña."></asp:RequiredFieldValidator>
         <asp:CompareValidator ID="cuvPass" runat="server" ControlToValidate="txtRePass" ControlToCompare="txtPass"
             CssClass="error-texto" Display="Dynamic" ErrorMessage="Las contraseñas no coinciden."></asp:CompareValidator>
 

@@ -25,9 +25,9 @@
                     <span class="precio" style="font-weight:700; color:#1d8348; font-size:1.5rem;"><asp:Label ID="lblPrecio" runat="server"></asp:Label></span>
                 </p>
                 <p style="margin-top:20px; display:flex; gap:10px;">
-                    <a class="boton" href="Default.aspx">← Volver al catálogo</a>
+                    <a class="boton" href="Default.aspx" style="background:#64748b; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">← Volver al catálogo</a>
                     <% if (Seguridad.sesionActiva(Session["user"])) { %>
-                        <asp:Button ID="btnFavorito" runat="server" CausesValidation="false" CssClass="boton fav" OnClick="btnFavorito_Click" />
+                        <asp:Button ID="btnFavorito" runat="server" CausesValidation="false" CssClass="boton fav" OnClick="btnFavorito_Click" style="padding:10px 20px; border-radius:8px; border:none; cursor:pointer;" />
                     <% } %>
                 </p>
             </div>

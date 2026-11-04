@@ -109,8 +109,8 @@ cd TpFinalNivel3BlancoGabriel
 Abrir `database/ScriptBaseDatos.sql` en SQL Server Management Studio (SSMS) y ejecutar:
 ```sql
 -- Crea la base de datos y los usuarios de prueba
--- Usuario admin: admin@admin.com / admin123
--- Usuario guest: guest@guest.com / guest123
+-- Usuario admin: admin@admin.com / admin
+-- Usuario user: user@user.com / user
 ```
 
 ### 3. Configurar la cadena de conexión

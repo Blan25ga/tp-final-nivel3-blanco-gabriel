@@ -39,9 +39,12 @@
             <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
             <asp:CustomValidator runat="server" ID="cvPrecio" CssClass="error-texto" Display="Dynamic" ErrorMessage="El precio debe ser numérico y no negativo." OnServerValidate="validarPrecio"></asp:CustomValidator>
 
-            <p style="margin-top:22px; display:flex; gap:12px;">
+<p style="margin-top:22px; display:flex; gap:12px;">
                 <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="boton" OnClick="btnAceptar_Click" />
                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="boton rojo" OnClick="btnCancelar_Click" CausesValidation="false" />
+            </p>
+            <p>
+                <a href="FormularioArticulo.aspx?id=<%# Eval("Id") %>" style="color:#c0392b; text-decoration:none;">Eliminar artículo</a>
             </p>
         </asp:PlaceHolder>
     </div>

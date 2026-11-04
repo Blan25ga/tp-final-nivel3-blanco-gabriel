@@ -15,7 +15,7 @@ namespace GestionCatalogo.Web
             }
             else
             {
-                lblError.Text = "Ocurrió un error inesperado.";
+                lblError.Text = "Ocurrió un error inesperado. Por favor, inténtelo más tarde.";
             }
         }
     }

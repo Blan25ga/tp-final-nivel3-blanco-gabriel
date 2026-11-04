@@ -63,6 +63,7 @@
                 <a href="<%= ResolveUrl("~/Default.aspx") %>">Catálogo</a>
                 <% if (Usuario != null && Usuario.Admin) { %>
                     <a href="<%= ResolveUrl("~/admin/PanelArticulos.aspx") %>" class="admin">Administración</a>
+                    <span style="color:#aab7c4; font-size:.82rem; margin-left:8px;">(<%= ViewData["ArticulosCount"] ?? 0 %> artículos)</span>
                 <% } %>
                 <% if (Usuario != null) { %>
                     <a href="<%= ResolveUrl("~/Favoritos.aspx") %>">Mis favoritos</a>

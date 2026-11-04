@@ -19,6 +19,19 @@ namespace GestionCatalogo.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Contar artículos para el menú de administración
+            if (Usuario != null && Usuario.Admin)
+            {
+                try
+                {
+                    ViewData["ArticulosCount"] = new ArticuloNegocio().contar();
+                }
+                catch
+                {
+                    ViewData["ArticulosCount"] = 0;
+                }
+            }
+
             // Verificar timeout de sesión
             if (Session["user"] == null)
             {

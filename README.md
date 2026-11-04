@@ -130,6 +130,24 @@ Editar `GestionCatalogo.Web/Web.config`:
 
 ---
 
+## 📫 Contacto
+
+Si tienes preguntas o comentarios sobre el proyecto, puedes contactarme:
+
+- **GitHub**: https://github.com/Blan25ga/tp-final-nivel3-blanco-gabriel
+- **Correo**: gabriel.blanco@maxi.com.ar
+
+---
+
+## ℹ️ Notas del proyecto
+
+- Este repositorio es una **entrega académica** del curso *Maxi Programa – Nivel 3*
+- El proyecto tiene **20 commits** en la rama `master`
+- La versión más reciente incluye información actualizada de la documentación
+- Para consultas sobre la arquitectura o la implementación, revisar los commits y el código fuente
+
+---
+
 ## 📈 Mejoras futuras
 
 - [ ] Implementación de pruebas unitarias

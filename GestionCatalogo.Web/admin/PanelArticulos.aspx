@@ -12,9 +12,6 @@
     <div runat="server" id="phPanel" visible="true">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
             <a href="FormularioArticulo.aspx" style="padding:8px 14px; background:#2c3e50; color:#fff; text-decoration:none; border-radius:8px;">Nuevo artículo</a>
-            <div style="color:#708699; font-size:.85rem;">
-                <asp:Label ID="lblPaginacion" runat="server" Text="Página 1 de 1"></asp:Label>
-            </div>
         </div>
         <div style="overflow-x:auto;">
             <table class="tabla" style="width:100%; border-collapse:collapse; min-width:800px;">
@@ -37,7 +34,7 @@
                                 <td style="padding:10px;"><%# Eval("Categoria") %></td>
                                 <td style="padding:10px; text-align:center;">
                                     <a class="boton" href="FormularioArticulo.aspx?id=<%# Eval("Id") %>" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:6px; text-decoration:none; color:#54657c; font-size:.82rem;">Editar</a>
-                                    <a class="boton-eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' style="padding:4px 8px; border:1px solid #f56565; border-radius:6px; text-decoration:none; color:#fff; font-size:.82rem; background:#fef2f2;">Eliminar</a>
+                                    <asp:LinkButton ID="btnEliminar" runat="server" CommandArgument='<%# Eval("Id") %>' OnCommand="btnEliminar_Command" OnClientClick="return confirm('¿Eliminar este artículo?');" style="padding:4px 8px; border:1px solid #f56565; border-radius:6px; text-decoration:none; color:#fff; font-size:.82rem; background:#f56565;">Eliminar</asp:LinkButton>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -46,11 +43,11 @@
             </table>
         </div>
         <div style="display:flex; justify-content:center; gap:10px; margin-top:20px; align-items:center;">
-            <asp:LinkButton ID="btnPaginaPrimera" runat="server" CommandArgument="1">|<</asp:LinkButton>
-            <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" Enabled="false">Anterior</asp:LinkButton>
+            <asp:LinkButton ID="btnPaginaPrimera" runat="server" CommandArgument="1" OnClick="btnPaginaPrimera_Click">|<</asp:LinkButton>
+            <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" OnClick="btnPaginaAnterior_Click" Enabled="false">Anterior</asp:LinkButton>
             <asp:Label ID="lblPaginacion" runat="server" Text="Página 1 de 1"></asp:Label>
-            <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1">Siguiente</asp:LinkButton>
-            <asp:LinkButton ID="btnPaginaUltima" runat="server" CommandArgument="99">>|</asp:LinkButton>
+            <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1" OnClick="btnPaginaSiguiente_Click">Siguiente</asp:LinkButton>
+            <asp:LinkButton ID="btnPaginaUltima" runat="server" CommandArgument="99" OnClick="btnPaginaUltima_Click">>|</asp:LinkButton>
         </div>
     </div>
 </asp:Content>

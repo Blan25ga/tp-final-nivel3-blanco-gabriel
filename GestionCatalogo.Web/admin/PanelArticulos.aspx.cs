@@ -51,9 +51,6 @@ namespace GestionCatalogo.Web.admin
                 lblPaginacion.Text = "Página " + currentPage + " de " + totalPages + " (" + totalItems + " artículos)";
                 btnPaginaAnterior.Enabled = (currentPage > 1);
                 btnPaginaSiguiente.Enabled = (currentPage < totalPages);
-
-                rblSortColumn.SelectedValue = sortColumn;
-                rblSortDirection.SelectedValue = sortDirection;
             }
             catch (Exception ex)
             {
@@ -65,6 +62,18 @@ namespace GestionCatalogo.Web.admin
         protected void btnPaginaAnterior_Click(object sender, EventArgs e)
         {
             currentPage--;
+            cargarListado();
+        }
+
+        protected void btnPaginaPrimera_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            cargarListado();
+        }
+
+        protected void btnPaginaUltima_Click(object sender, EventArgs e)
+        {
+            currentPage = int.MaxValue;
             cargarListado();
         }
 

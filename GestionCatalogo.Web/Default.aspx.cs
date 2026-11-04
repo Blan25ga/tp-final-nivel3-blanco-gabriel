@@ -114,6 +114,18 @@ namespace GestionCatalogo.Web
             cargarGrilla();
         }
 
+        protected void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            currentPage--;
+            cargarGrilla();
+        }
+
+        protected void btnPaginaSiguiente_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            cargarGrilla();
+        }
+
         protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentPage = 1;

@@ -15,8 +15,6 @@
             ErrorMessage="Formato de email inválido." CssClass="error-texto" Display="Dynamic"
             ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"></asp:RegularExpressionValidator>
         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" CssClass="error-texto" Display="Dynamic" ErrorMessage="Debes completar el email."></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="revEmailMax" runat="server" ControlToValidate="txtEmail"
-            MaxLength="50"></asp:RegularExpressionValidator>
 
         <label>Contraseña</label>
         <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>

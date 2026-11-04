@@ -37,6 +37,68 @@ namespace negocio
             }
         }
 
+        public int contar()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM ARTICULOS");
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    return Convert.ToInt32(datos.Lector[0]);
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Articulo> listarOrdenado(string sortColumn, string sortDirection)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string columnaQuery = "A.Nombre";
+                if (sortColumn == "Marca") columnaQuery = "M.Descripcion";
+                else if (sortColumn == "Precio") columnaQuery = "A.Precio";
+                else if (sortColumn == "Categoria") columnaQuery = "C.Descripcion";
+                else if (sortColumn == "Nombre") columnaQuery = "A.Nombre";
+
+                string direccionQuery = (sortDirection == "DESC" ? "DESC" : "ASC");
+
+                datos.setearConsulta(
+                    "SELECT A.Id, Codigo, Nombre, A.Descripcion, ImagenUrl, Precio, " +
+                    "M.Descripcion Marca, C.Descripcion Categoria, A.IdMarca, A.IdCategoria " +
+                    "FROM ARTICULOS A " +
+                    "INNER JOIN MARCAS M ON A.IdMarca = M.Id " +
+                    "INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id " +
+                    "ORDER BY " + columnaQuery + " " + direccionQuery);
+
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    lista.Add(mapear(datos.Lector));
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();

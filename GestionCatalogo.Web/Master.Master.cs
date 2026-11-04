@@ -7,6 +7,8 @@ namespace GestionCatalogo.Web
 {
     public partial class Master : System.Web.UI.MasterPage
     {
+        public int ArticulosCount { get; set; } = 0;
+
         public dominio.User Usuario
         {
             get
@@ -24,20 +26,26 @@ namespace GestionCatalogo.Web
             {
                 try
                 {
-                    ViewData["ArticulosCount"] = new ArticuloNegocio().contar();
+                    ArticulosCount = new ArticuloNegocio().contar();
                 }
                 catch
                 {
-                    ViewData["ArticulosCount"] = 0;
+                    ArticulosCount = 0;
                 }
             }
 
-            // Verificar timeout de sesión
+            // Verificar timeout de sesión (excepto en Login y Error, para no entrar en bucle)
             if (Session["user"] == null)
             {
-                Session.Add("error", "Tu sesión expiró. Por favor, inicia sesión nuevamente.");
-                Response.Redirect("~/Login.aspx", false);
-                return;
+                string pagina = Request.AppRelativeCurrentExecutionFilePath ?? "";
+                bool esPublica = pagina.Equals("~/Login.aspx", StringComparison.OrdinalIgnoreCase)
+                              || pagina.Equals("~/Error.aspx", StringComparison.OrdinalIgnoreCase);
+                if (!esPublica)
+                {
+                    Session.Add("error", "Tu sesión expiró. Por favor, inicia sesión nuevamente.");
+                    Response.Redirect("~/Login.aspx", false);
+                    return;
+                }
             }
 
             btnSalir.Visible = true;

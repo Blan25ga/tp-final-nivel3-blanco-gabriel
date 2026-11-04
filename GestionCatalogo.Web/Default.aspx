@@ -54,21 +54,15 @@
                     </div>
                 </div>
             </ItemTemplate>
-            <EmptyDataTemplate>
-                <div class="tarjeta vacia">
-                    <h3>No hay artículos disponibles</h3>
-                    <p>Aún no se han agregado productos al catálogo.</p>
-                </div>
-            </EmptyDataTemplate>
         </asp:Repeater>
     </div>
 
     <p id="sinResultados" runat="server" visible="false" style="color:#708699; padding:20px 0;">No encontramos artículos con esos filtros.</p>
 
     <div style="display:flex; justify-content:center; gap:10px; margin-top:20px; align-items:center;">
-        <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" Enabled="false">Anterior</asp:LinkButton>
+        <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" OnClick="btnPaginaAnterior_Click" Enabled="false">Anterior</asp:LinkButton>
         <asp:Label ID="lblPaginacion" runat="server" Text="Página 1 de 1"></asp:Label>
-        <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1">Siguiente</asp:LinkButton>
+        <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1" OnClick="btnPaginaSiguiente_Click">Siguiente</asp:LinkButton>
     </div>
 
 </asp:Content>

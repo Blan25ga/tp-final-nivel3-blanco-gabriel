@@ -10,11 +10,13 @@
         <div id="divMensaje" runat="server" class="mensaje-error" visible="false"></div>
 
         <label>Nombre de usuario (email)</label>
-        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" placeholder="ej. email@dominio.com"></asp:TextBox>
+        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" placeholder="ej. email@dominio.com" MaxLength="50"></asp:TextBox>
         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
             ErrorMessage="Formato de email inválido." CssClass="error-texto" Display="Dynamic"
             ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"></asp:RegularExpressionValidator>
         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" CssClass="error-texto" Display="Dynamic" ErrorMessage="Debes completar el email."></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="revEmailMax" runat="server" ControlToValidate="txtEmail"
+            MaxLength="50"></asp:RegularExpressionValidator>
 
         <label>Contraseña</label>
         <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>

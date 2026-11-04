@@ -18,9 +18,9 @@ namespace negocio
                 datos.ejecutarLectura();
                 return datos.Lector.Read();
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
-                throw;
+                throw new Exception("Error al verificar favorito: " + ex.Message);
             }
             finally
             {

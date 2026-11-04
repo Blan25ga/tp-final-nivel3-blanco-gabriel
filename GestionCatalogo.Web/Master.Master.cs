@@ -19,7 +19,15 @@ namespace GestionCatalogo.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            btnSalir.Visible = (Usuario != null);
+            // Verificar timeout de sesión
+            if (Session["user"] == null)
+            {
+                Session.Add("error", "Tu sesión expiró. Por favor, inicia sesión nuevamente.");
+                Response.Redirect("~/Login.aspx", false);
+                return;
+            }
+
+            btnSalir.Visible = true;
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)

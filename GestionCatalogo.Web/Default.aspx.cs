@@ -12,6 +12,8 @@ namespace GestionCatalogo.Web
     public partial class Default : System.Web.UI.Page
     {
         private List<Articulo> artLos = new List<Articulo>();
+        private const int pageSize = 9;
+        private int currentPage = 1;
 
         public List<Articulo> Articulos
         {
@@ -81,10 +83,24 @@ namespace GestionCatalogo.Web
                     filtrada = filtrada.FindAll(x => x.Categoria.Id == idCategoria).ToList();
                 filtrada = filtrada.FindAll(x => x.Precio >= 0 && x.Precio <= precioMax).ToList();
 
-                repArticulos.DataSource = filtrada;
+                // --- Paginación ---
+                int totalItems = filtrada.Count;
+                int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                int startIndex = (currentPage - 1) * pageSize;
+                int endIndex = Math.Min(startIndex + pageSize, totalItems);
+                var pagina = filtrada.GetRange(startIndex, endIndex - startIndex);
+
+                repArticulos.DataSource = pagina;
                 repArticulos.DataBind();
 
-                sinResultados.Visible = (filtrada.Count == 0);
+                sinResultados.Visible = (totalItems == 0);
+
+                lblPaginacion.Text = "Página " + currentPage + " de " + totalPages + " (" + totalItems + " artículos)";
+                btnPaginaAnterior.Enabled = (currentPage > 1);
+                btnPaginaSiguiente.Enabled = (currentPage < totalPages);
             }
             catch (Exception)
             {
@@ -94,21 +110,25 @@ namespace GestionCatalogo.Web
 
         protected void txtNombre_TextChanged(object sender, EventArgs e)
         {
+            currentPage = 1;
             cargarGrilla();
         }
 
         protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            currentPage = 1;
             cargarGrilla();
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            currentPage = 1;
             cargarGrilla();
         }
 
         protected void txtPrecioMax_TextChanged(object sender, EventArgs e)
         {
+            currentPage = 1;
             cargarGrilla();
         }
 

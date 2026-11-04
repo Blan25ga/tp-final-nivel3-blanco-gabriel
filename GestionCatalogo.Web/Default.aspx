@@ -52,4 +52,10 @@
 
     <p id="sinResultados" runat="server" visible="false" style="color:#708699; padding:20px 0;">No encontramos artículos con esos filtros.</p>
 
+    <div style="display:flex; justify-content:center; gap:10px; margin-top:20px; align-items:center;">
+        <asp:LinkButton ID="btnPaginaAnterior" runat="server" CommandArgument="0" Enabled="false">Anterior</asp:LinkButton>
+        <asp:Label ID="lblPaginacion" runat="server" Text="Página 1 de 1"></asp:Label>
+        <asp:LinkButton ID="btnPaginaSiguiente" runat="server" CommandArgument="1">Siguiente</asp:LinkButton>
+    </div>
+
 </asp:Content>

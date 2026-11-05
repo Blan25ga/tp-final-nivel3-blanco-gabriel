@@ -10,6 +10,16 @@ namespace GestionCatalogo.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Aviso de cuenta creada con éxito (llega desde Registro)
+            string nuevoUsuario = Session["nuevoUsuario"] as string;
+            if (nuevoUsuario != null)
+            {
+                divMensaje.Attributes["class"] = "mensaje-ok";
+                divMensaje.InnerText = "¡Cuenta creada con éxito! Ya podés iniciar sesión con " + nuevoUsuario + ".";
+                divMensaje.Visible = true;
+                Session.Remove("nuevoUsuario");
+            }
+
             if (Seguridad.sesionActiva(Session["user"]))
             {
                 Response.Redirect("Default.aspx", false);

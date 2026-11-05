@@ -34,11 +34,12 @@ namespace GestionCatalogo.Web
                 }
             }
 
-            // Verificar timeout de sesión (excepto en Login y Error, para no entrar en bucle)
+            // Verificar timeout de sesión (excepto en Login, Registro y Error, para no entrar en bucle)
             if (Session["user"] == null)
             {
                 string pagina = Request.AppRelativeCurrentExecutionFilePath ?? "";
                 bool esPublica = pagina.Equals("~/Login.aspx", StringComparison.OrdinalIgnoreCase)
+                              || pagina.Equals("~/Registro.aspx", StringComparison.OrdinalIgnoreCase)
                               || pagina.Equals("~/Error.aspx", StringComparison.OrdinalIgnoreCase);
                 if (!esPublica)
                 {

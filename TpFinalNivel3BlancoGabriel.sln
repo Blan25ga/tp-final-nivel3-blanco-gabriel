@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.11.12328.437 stable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4665-BE14-9C7B4CE01083}") = "dominio", "dominio\dominio.csproj", "{D5A4A5A1-6D5F-4B5B-9D1E-8C0F0A6B5A01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{D5A4A5A1-6D5F-4B5B-9D1E-8C0F0A6B5A01}"
 EndProject
-Project("{9A19103F-16F7-4665-BE14-9C7B4CE01083}") = "negocio", "negocio\negocio.csproj", "{D5A4A5A1-6D5F-4B5B-9D1E-8C0F0A6B5A02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{D5A4A5A1-6D5F-4B5B-9D1E-8C0F0A6B5A02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCatalogo.Web", "GestionCatalogo.Web\GestionCatalogo.Web.csproj", "{F3D80A22-7A1E-4A68-9E2C-1E5D7A6B4E9F}"
 EndProject
@@ -29,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {241FEE00-5555-431E-BEB8-69DA36DFB3C3}
 	EndGlobalSection
 EndGlobal
